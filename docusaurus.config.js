@@ -7,8 +7,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'AssettoServer',
   tagline: 'Custom Assetto Corsa server with focus on freeroam',
-  url: 'https://assettoserver.org',
-  baseUrl: '/',
+  url: 'https://assettocn.github.io',
+  baseUrl: '/assettoserver-docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -19,15 +19,23 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'compujuckel', // Usually your GitHub org/user name.
-  projectName: 'AssettoServer', // Usually your repo name.
+  organizationName: 'AssettoCN', // Usually your GitHub org/user name.
+  projectName: 'assettoserver-docs', // Usually your repo name.
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  // i18n: English stays at baseUrl '/' (default locale), zh-Hans is served from '/zh-Hans/'.
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'zh-Hans'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        htmlLang: 'en',
+      },
+      'zh-Hans': {
+        label: '简体中文',
+        htmlLang: 'zh-Hans',
+      },
+    },
   },
 
   presets: [
@@ -39,6 +47,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/compujuckel/assettoserver-docs/blob/master/',
           showLastUpdateTime: true,
+          lastVersion: 'current',
           versions: {
             current: {
               label: "0.0.55",
@@ -61,6 +70,7 @@ const config = {
         routeBasePath: 'patreon-docs',
         sidebarPath: require.resolve('./sidebars.js'),
         showLastUpdateTime: true,
+        lastVersion: 'current',
         versions: {
           current: {
             label: "Unreleased",
@@ -103,6 +113,10 @@ const config = {
             position: 'left',
             dropdownActiveClassDisabled: true,
             docsPluginId: 'patreon-docs',
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
           },
           {
             to: 'https://discord.gg/uXEXRcSkyz',

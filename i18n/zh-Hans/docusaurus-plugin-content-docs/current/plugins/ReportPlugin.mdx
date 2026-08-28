@@ -1,0 +1,26 @@
+---
+description: 让玩家提交回放供服务器管理员审核
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_report_cfg.reference.yml";
+
+# ReportPlugin
+该插件让玩家可以提交回放，供服务器管理员审核。
+
+其工作流程如下：
+* 玩家按 Ctrl+Shift+S 向服务器发送一段回放片段（需要 CSP 0.1.76 及以上版本）
+  * 回放会保存在服务器的 `reports/` 文件夹中，同时还会生成一个包含已连接玩家列表和事件记录的 json 文件
+* 玩家使用 `/report <reason>` 命令为举报指定原因
+  * 系统会向指定的 webhook 发送一条 Discord 消息，并附上回放和 json 文件作为附件
+* 管理员可以查看回放并采取相应的处理措施
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+- ReportPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_report_cfg.yml">{cfg}</CodeBlock>

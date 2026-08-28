@@ -1,0 +1,25 @@
+---
+description: 定义自定义聊天命令
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_custom_command_cfg.reference.yml";
+
+# CustomCommandPlugin
+该插件允许你定义自定义聊天命令，并用预设的回复进行响应。
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+  - CustomCommandPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_custom_command_cfg.yml">{cfg}</CodeBlock>
+
+## 用法
+在游戏中，你可以通过聊天应用（chat app）使用已配置的命令。  
+输入 `/alias` 后，你会收到 `some spicy response` 的回复。
+
+只有发送命令的玩家本人会收到服务器的回复。

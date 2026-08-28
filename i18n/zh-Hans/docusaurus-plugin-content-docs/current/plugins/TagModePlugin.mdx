@@ -1,0 +1,42 @@
+---
+description: 捉人游戏模式
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_tag_mode_cfg.reference.yml";
+
+# TagModePlugin 
+
+---
+description: 捉人游戏模式
+---
+
+# TagModePlugin 
+
+类似僵尸感染的捉人玩法：捉人者通过撞击逃跑者来完成"捕捉"，并将其转化到自己的队伍。
+
+## 功能：
+
+- 无尽模式：回合持续进行，直到所有逃跑者都被抓住为止，最后的幸存者获胜。
+- 普通模式：只要时间耗尽时至少有一名逃跑者幸存，逃跑者一方即获胜。
+- 可以允许中途加入的玩家以逃跑者或捉人者的身份进入。
+- 车身颜色会实时更新，用于显示每名玩家当前的角色。
+- 回合时长、暂停间隔以及回合之间的循环方式均可配置。
+
+::::note
+
+该插件强制要求最低 CSP 版本 0.1.77 (1937)，并且需要在 `extra_cfg.yml` 中设置 `EnableClientMessages: true`！
+
+`entry_list.ini` 中的车辆**不能**在其皮肤行中带有 CSP 扩展选项 `Allow Color Changing` 标志！
+
+::::
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+- TagModePlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_tag_mode_cfg.yml">{cfg}</CodeBlock>

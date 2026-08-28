@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "0.0.50",
+    "description": "The label for version 0.0.50"
+  },
+  "sidebar.tutorialSidebar.category.Plugins": {
+    "message": "Plugins",
+    "description": "The label for category 'Plugins' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Plugins.link.generated-index.description": {
+    "message": "List of plugins that come bundled with AssettoServer",
+    "description": "The generated-index page description for category 'Plugins' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.AI Splines": {
+    "message": "AI Splines",
+    "description": "The label for category 'AI Splines' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.AI Splines.link.generated-index.description": {
+    "message": "AI Splines",
+    "description": "The generated-index page description for category 'AI Splines' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Miscellaneous": {
+    "message": "Miscellaneous",
+    "description": "The label for category 'Miscellaneous' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Miscellaneous.link.generated-index.description": {
+    "message": "Miscellaneous",
+    "description": "The generated-index page description for category 'Miscellaneous' in sidebar 'tutorialSidebar'"
+  }
+}

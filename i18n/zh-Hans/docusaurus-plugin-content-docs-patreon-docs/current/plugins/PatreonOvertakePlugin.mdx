@@ -1,0 +1,33 @@
+---
+description: 通过超越其他车辆获得分数
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_patreon_overtake_cfg.reference.yml";
+
+# PatreonOvertakePlugin
+
+带排行榜的超车模式插件。玩家在不发生碰撞的情况下超越其他车辆即可获得分数。
+每次超车，得分倍率增加 1；每次近距离超车增加 3；倍率会随时间缓慢下降。
+
+::::note
+
+排行榜需要 PatreonHubPlugin 才能工作。
+
+需要强制最低 CSP 版本 0.1.77 (1937)，并且在 `extra_cfg.yml` 中设置 `EnableClientMessages: true`！
+
+::::
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+  - PatreonOvertakePlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_patreon_overtake_cfg.yml">{cfg}</CodeBlock>
+
+## UI 自定义 {#ui-customization}
+超车模式的 lua 脚本位于 `plugins/PatreonOvertakePlugin/lua/overtake.lua`。你可以编辑此文件来更改 UI、添加 logo 等。  
+注意，出于安全原因，分数计算在服务器端进行，无法通过此方式修改。

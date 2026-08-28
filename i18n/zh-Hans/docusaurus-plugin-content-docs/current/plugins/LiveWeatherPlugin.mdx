@@ -1,0 +1,26 @@
+---
+description: 从 OpenWeatherMap 获取实时天气
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_live_weather_cfg.reference.yml";
+
+# LiveWeatherPlugin
+该插件用于从 OpenWeatherMap 获取实时天气。
+
+::::note
+
+要想获得平滑的天气过渡和降雨效果，你需要在 `extra_cfg.yml` 中将 `EnableWeatherFx` 设为 `true`。
+
+::::
+
+要获取 API 密钥，你需要先在 https://openweathermap.org/ 注册一个免费账户。
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+- LiveWeatherPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_live_weather_cfg.yml">{cfg}</CodeBlock>

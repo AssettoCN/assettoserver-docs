@@ -1,0 +1,18 @@
+{
+  "version.label": {
+    "message": "0.0.39",
+    "description": "The label for version 0.0.39"
+  },
+  "sidebar.tutorialSidebar.category.Plugins": {
+    "message": "Plugins",
+    "description": "The label for category 'Plugins' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Plugins.link.generated-index.description": {
+    "message": "List of plugins available on the AssettoServer Patreon",
+    "description": "The generated-index page description for category 'Plugins' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.AssettoServer Hub": {
+    "message": "AssettoServer Hub",
+    "description": "The label for category 'AssettoServer Hub' in sidebar 'tutorialSidebar'"
+  }
+}

@@ -1,0 +1,57 @@
+---
+description: 收集有关玩家和车辆使用情况的指标
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_patreon_analytics_cfg.reference.yml";
+
+# PatreonAnalyticsPlugin
+
+::::caution
+
+这是一个高级插件，要求你知道如何部署和运营 [Prometheus](https://prometheus.io/) 或 [VictoriaMetrics](https://victoriametrics.com/)（推荐）来接收和存储指标。
+
+Prometheus 或 VictoriaMetrics 的部署和运营不在本文档的讨论范围内。
+
+::::
+
+::::note
+
+客户端指标要求强制最低 CSP 版本 0.1.77 (1937)，并且在 `extra_cfg.yml` 中设置 `EnableClientMessages: true`！
+
+::::
+
+该插件可以收集有关客户端性能和车辆使用情况的指标。  
+Prometheus 格式的指标可通过 `/metrics` 端点获取。
+
+## 客户端指标
+有关客户端的常规信息将记录在服务器日志中：
+```
+[20:24:21 INF] Analytics for compu (1234567890): screen=1920x1080 msaa=2 detail=3 fullscreen=False vsync=False post=True vr=False triple=False shifter=False fpsCap=40
+```
+
+对所有玩家进行聚合统计（第 50/75/95/99 百分位数）：
+* FPS
+* CPU 占用率
+* 帧时间
+* CPU 时间
+* GPU 时间
+* 场景三角形数量
+* 绘制调用次数
+* 灯光数量
+* 额外阴影数量
+
+## 服务器指标
+每辆车：
+* 空置/加载画面中/怠速/驾驶所花费的时间
+* 随时间变化的碰撞次数
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+  - PatreonAnalyticsPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_patreon_analytics_cfg.yml">{cfg}</CodeBlock>

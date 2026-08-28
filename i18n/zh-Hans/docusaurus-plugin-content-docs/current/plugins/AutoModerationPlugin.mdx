@@ -1,0 +1,33 @@
+---
+description: 在玩家违反规则时自动将其踢出服务器
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_auto_moderation_cfg.reference.yml";
+
+# AutoModerationPlugin
+
+该插件会在玩家违反以下规则时自动将其踢出：
+* 夜间行驶时不开车灯
+* 逆向行驶
+* 堵塞道路
+
+::::note
+管理员不受这些规则的约束，不会看到违规标记，也不会被踢出。
+::::
+
+启用 `EnableClientMessages` 后，会向玩家显示逆向行驶 / 禁止停车 / 未开灯的警示牌。  
+`Flags` 文件夹中自带的是日式警示牌，你可以用自定义警示牌替换它们。
+## 演示
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/FojgcDgF-Iw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+- AutoModerationPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_auto_moderation_cfg.yml">{cfg}</CodeBlock>

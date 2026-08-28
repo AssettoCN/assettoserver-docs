@@ -1,0 +1,41 @@
+---
+description: 演示如何为服务器添加自定义 HTTP 路由和聊天命令的示例
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_sample_cfg.reference.yml";
+
+# SamplePlugin
+该示例演示了如何为服务器添加自定义 HTTP 路由和聊天命令。
+
+::::caution
+
+请注意，AssettoServer 采用 AGPL 许可证授权。该许可证要求对服务器代码的所有更改（包括插件）都必须开源。
+
+::::
+
+## 如何创建你自己的插件
+新建一个 `Class Library` 项目，并确保你的 `*.csproj` 文件中包含以下内容：
+
+```xml
+<PropertyGroup>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+</PropertyGroup>
+```
+
+```xml
+<ItemGroup>
+    <ProjectReference Include="..\AssettoServer\AssettoServer.csproj">
+        <Private>false</Private>
+        <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+</ItemGroup>
+```
+
+然后创建一个实现 `IAssettoServerPlugin`（用于无配置的插件）或 `IAssettoServerPlugin<T>` 接口（用于带配置的插件）的类。  
+每个插件都会获得自己的配置文件，文件名由配置类型的名称派生。例如，类型 `SampleConfiguration` 会从 `plugin_sample_cfg.yml` 文件中读取。
+
+```yaml
+Config1: Value1
+Config2: Value2
+```
