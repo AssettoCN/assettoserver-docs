@@ -7,8 +7,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'AssettoServer',
   tagline: 'Custom Assetto Corsa server with focus on freeroam',
-  url: 'https://assettoserver.org',
-  baseUrl: '/',
+  url: 'https://assettocn.github.io',
+  baseUrl: '/assettoserver-docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -19,8 +19,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'compujuckel', // Usually your GitHub org/user name.
-  projectName: 'AssettoServer', // Usually your repo name.
+  organizationName: 'AssettoCN', // Usually your GitHub org/user name.
+  projectName: 'assettoserver-docs', // Usually your repo name.
 
   // i18n: English stays at baseUrl '/' (default locale), zh-Hans is served from '/zh-Hans/'.
   i18n: {
