@@ -1,0 +1,21 @@
+---
+description: 将游戏内聊天与 Twitch 频道的聊天连接起来
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_patreon_twitch_chat_cfg.reference.yml";
+
+# PatreonTwitchChatPlugin
+用于将游戏内聊天与 Twitch 频道聊天连接起来的插件。
+
+可以在[这里](https://twitchtokengenerator.com/)获取 Twitch 访问令牌（选择 "Bot Chat Token"）
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+  - PatreonTwitchChatPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_patreon_twitch_chat_cfg.yml">{cfg}</CodeBlock>

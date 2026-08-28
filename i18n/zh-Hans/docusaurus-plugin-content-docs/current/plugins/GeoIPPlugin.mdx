@@ -1,0 +1,30 @@
+---
+description: 对已连接的玩家进行地理 IP 查询
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_geo_ip_cfg.reference.yml";
+
+# GeoIPPlugin
+该插件用于对已连接的玩家进行地理 IP（GeoIP）查询。
+
+::::note
+
+查询在本地完成，因此你需要一份 GeoLite2 城市数据库，可以在这里下载：https://dev.maxmind.com/geoip/geolite2-free-geolocation-data?lang=en
+
+::::
+
+日志输出格式：
+```
+GeoIP results for {ClientName}: {Country} ({CountryCode}) [{Lat},{Lon}]
+```
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+- GeoIPPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_geo_ip_cfg.yml">{cfg}</CodeBlock>

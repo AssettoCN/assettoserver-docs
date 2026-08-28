@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "0.0.55",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Plugins": {
+    "message": "插件",
+    "description": "The label for category 'Plugins' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Plugins.link.generated-index.description": {
+    "message": "AssettoServer 自带的插件列表",
+    "description": "The generated-index page description for category 'Plugins' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.AI Splines": {
+    "message": "AI 行驶线路",
+    "description": "The label for category 'AI Splines' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.AI Splines.link.generated-index.description": {
+    "message": "AI 行驶线路",
+    "description": "The generated-index page description for category 'AI Splines' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Miscellaneous": {
+    "message": "杂项",
+    "description": "The label for category 'Miscellaneous' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Miscellaneous.link.generated-index.description": {
+    "message": "杂项",
+    "description": "The generated-index page description for category 'Miscellaneous' in sidebar 'tutorialSidebar'"
+  }
+}

@@ -1,0 +1,21 @@
+---
+description: 为“预留”玩家保留车辆模型和槽位
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_patreon_reserved_slots_cfg.reference.yml";
+
+# PatreonReservedSlotsPlugin
+用于为“预留”玩家保留车辆模型和槽位的插件。只有 SteamID 列于所配置用户组中的玩家才能加入这些槽位。  
+
+有关用户组的一般信息，请参见[此页面](../assettoserver-hub/user-groups.md)。
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+  - PatreonReservedSlotsPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_patreon_reserved_slots_cfg.yml">{cfg}</CodeBlock>

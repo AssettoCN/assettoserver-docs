@@ -1,0 +1,14 @@
+{
+  "version.label": {
+    "message": "0.0.35",
+    "description": "The label for version 0.0.35"
+  },
+  "sidebar.tutorialSidebar.category.Plugins": {
+    "message": "Plugins",
+    "description": "The label for category 'Plugins' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Plugins.link.generated-index.description": {
+    "message": "Plugins",
+    "description": "The generated-index page description for category 'Plugins' in sidebar 'tutorialSidebar'"
+  }
+}

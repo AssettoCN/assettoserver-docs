@@ -1,0 +1,26 @@
+---
+description: 根据太阳位置动态调整时间倍率
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_time_dilation_cfg.reference.yml";
+
+# TimeDilationPlugin
+
+该插件会根据太阳位置或一天中的时间动态调整时间倍率（time multiplier）。例如，可以用它让白天的时间流逝得更快、夜晚更慢。
+
+::::note
+
+需要在 `data_tracks_params.ini` 中提供赛道的经度和纬度。
+
+::::
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+- TimeDilationPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_time_dilation_cfg.yml">{cfg}</CodeBlock>

@@ -1,0 +1,60 @@
+---
+description: 根据行驶里程和碰撞次数计算安全评分
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_patreon_safety_rating_cfg.reference.yml";
+
+# PatreonSafetyRatingPlugin
+
+该插件会根据玩家单位行驶里程内的碰撞次数为其分配等级。这能让其他玩家轻松识别出技术不佳的司机或恶意撞车者。
+
+:::note
+
+该插件需要 PatreonHubPlugin 才能工作。
+
+需要强制最低 CSP 版本 0.1.77 (1937)，并且在 `extra_cfg.yml` 中设置 `EnableClientMessages: true`！
+
+:::
+
+## 工作原理
+
+该插件为玩家的每次碰撞分配接触点数，再用行驶里程除以该值。  
+每次碰撞的点数取决于相对速度和碰撞类型。  
+
+碰撞类型倍率为：AI 0.2、环境 0.3、玩家 0.6。  
+速度倍率在 100km/h 处封顶。  
+100km/h 的碰撞严重程度是 10km/h 碰撞的两倍，低于 10km/h 的碰撞不计入。  
+
+评分范围为 0（最差）到 10（最佳），每行驶 25km 重新计算一次。
+
+## 配置
+
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+  - PatreonSafetyRatingPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_patreon_safety_rating_cfg.yml">{cfg}</CodeBlock>
+
+
+## Hub 配置
+
+等级在 AssettoServer Hub 中配置。`configuration.yml` 示例片段：
+
+```yaml title="configuration.yml (AssettoServer Hub)"
+# List of ranks for PatreonSafetyRatingPlugin
+SafetyRatingRanks:
+- Name: A
+  Color: '#00FF00'
+  MinimumRating: 3
+- Name: B
+  # Leave Color empty for no color
+  Color: 
+  MinimumRating: 1
+- Name: C
+  Color: '#FF0000'
+  MinimumRating: 0
+```

@@ -22,12 +22,20 @@ const config = {
   organizationName: 'compujuckel', // Usually your GitHub org/user name.
   projectName: 'AssettoServer', // Usually your repo name.
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  // i18n: English stays at baseUrl '/' (default locale), zh-Hans is served from '/zh-Hans/'.
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'zh-Hans'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        htmlLang: 'en',
+      },
+      'zh-Hans': {
+        label: '简体中文',
+        htmlLang: 'zh-Hans',
+      },
+    },
   },
 
   presets: [
@@ -103,6 +111,10 @@ const config = {
             position: 'left',
             dropdownActiveClassDisabled: true,
             docsPluginId: 'patreon-docs',
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
           },
           {
             to: 'https://discord.gg/uXEXRcSkyz',

@@ -1,0 +1,165 @@
+---
+sidebar_position: 1
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 简介
+
+## 关于
+AssettoServer 是一个为 Assetto Corsa 打造的自定义游戏服务器，开发时以自由漫游为核心。它修复了大量安全问题，并提供了 AI 车流、动态天气等新功能，是对原版游戏服务器的巨大改进。
+
+Race（比赛）与 Qualification（排位）会话仍处于实验性状态，可能需要更多测试。
+
+本项目是 https://github.com/Niewiarowski/AssettoServer 的一个 fork。
+
+## 安装
+
+<Tabs>
+<TabItem value="windows" label="Windows" default>
+
+  * 从[最新稳定版发布页](https://github.com/compujuckel/AssettoServer/releases/latest)下载 `assetto-server-win-x64.zip` 并解压到任意位置。  
+
+  :::caution 请勿解压到你的 Assetto Corsa 游戏目录！
+
+    AC 和 AssettoServer 使用的是不同版本的 Steam SDK，两者会相互冲突。
+    如果你仍然觉得必须解压到 AC 目录，请先删除服务器中的 steam_api64.dll，但这会导致 Steam 身份验证（Steam Auth）失效。
+  
+  :::
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+  * 从[最新稳定版发布页](https://github.com/compujuckel/AssettoServer/releases/latest)下载 `assetto-server-linux-x64.tar.gz` 并解压到任意位置。
+
+</TabItem>
+</Tabs>
+
+## 使用
+
+### 通过 Content Manager（完整版）
+
+* 在资源管理器中打开你的 AC 服务器目录，例如 `C:\Program Files (x86)\Steam\steamapps\common\assettocorsa\server`
+* 将 `acServer.exe` 重命名为其他名称
+* 将 `assetto-server-win-x64.zip` 解压到该目录
+* 将 `AssettoServer.exe` 重命名为 `acServer.exe`
+
+现在你就可以像使用原版服务器一样，通过 CM 启动服务器了。请注意，原版服务器的功能并非全部得到支持，因此 CM 中的某些服务器设置要么不会生效，要么对应的功能根本无法使用。
+
+### 专用服务器（dedicated server）
+
+最简单的入门方式是用 Content Manager 创建服务器配置。  
+之后只需点击 "Pack"（打包），即可生成一个包含所有必需配置和数据文件的压缩包。将该压缩包解压到服务器根目录即可。
+
+## 功能
+
+大多数功能都可以通过 `extra_cfg.yml` 控制。如果该文件不存在，会在服务器首次启动时自动创建。
+
+### Steam 身份验证
+
+Assetto Corsa 的原版服务器实现不会使用 Steam API 来判断已连接的玩家
+是否真的是其所声称的账号。这就为 SteamID 欺骗（spoofing）敞开了大门，意味着有人可以
+冒充其他玩家。
+
+本服务器使用了 [Steam Auth API](https://partner.steamgames.com/doc/features/auth)，从而杜绝了 SteamID 欺骗。
+
+由于玩家在加入前需要先获取 Steam 会话票据（session ticket），因此需要 0.1.75 或更高版本的 CSP (Custom Shaders Patch) 以及 v0.8.2297.38573 或更高版本的 Content Manager。
+
+此功能必须在 `extra_cfg.yml` 中启用。
+
+### 通过 SteamID 登录管理员
+
+要自动以管理员身份登录，请在服务器目录的 `admins.txt` 中填入你的 SteamID。
+
+:::caution
+
+请勿在禁用 Steam Auth 的情况下使用此功能！否则他人可能通过 SteamID 欺骗获得管理员权限。
+
+:::
+
+### AI 车流
+
+可以加载一条或多条 AI 行驶线路（AI spline）来提供 AI 车流。将 `fast_lane.ai`（或 `fast_lane.aip`）放入地图的 `ai/` 文件夹，并在 `extra_cfg.yml` 中将 `EnableAi` 设为 `true`。  
+默认的 AI 设置是针对 Shutoko Revival Project 调校的，其他地图可能需要不同的设置。
+
+要让 AI 占用一个车辆槽位，你需要在 `entry_list.ini` 中添加一个新参数，例如：
+```ini
+[CAR_0]
+MODEL=ktyu_c8_lav_s1
+SKIN=04_gunmetal_grey/ADAn
+BALLAST=0
+RESTRICTOR=0
+// highlight-next-line
+AI=auto
+```
+
+`AI` 参数的可选值如下：
+* `auto` - 槽位为空时由 AI 占用
+* `fixed` - AI 将始终占用该车辆槽位，玩家将无法加入此槽位
+* `none` - AI 永不占用该槽位（默认值）
+
+使用 `AI=auto` 槽位时，强烈建议在 `extra_cfg.yml` 中指定 `MaxPlayerCount`，以确保始终保有一定数量的 AI 车辆。
+
+:::note
+
+管理员始终可以加入 AI 槽位。
+
+:::
+
+### 动态天气
+
+服务器支持 CSP 的 WeatherFX v1，可实现动态天气、平滑的天气过渡以及 RainFX。此功能需要 CSP 0.1.76 或更高版本。
+
+内置了三个利用动态天气的插件：
+* [LiveWeatherPlugin](./plugins/LiveWeatherPlugin.mdx)：从 openweathermap.org 获取实时天气
+* [RandomWeatherPlugin](./plugins/RandomWeatherPlugin.mdx)：随机天气
+* [VotingWeatherPlugin](./plugins/VotingWeatherPlugin.mdx)：让玩家投票选择天气变化
+
+### 插件接口
+
+服务器提供了一个实验性的插件接口，可用于为服务器添加功能。请查看[示例插件](./plugins/SamplePlugin.mdx)，了解如何着手开发你自己的插件。
+
+该 API 仍在开发中，未来可能会发生变化。
+
+## 获取帮助
+如果你在搭建服务器时遇到问题，欢迎访问我们 [Discord](https://discord.gg/uXEXRcSkyz) 的 #server-troubleshooting 频道。
+
+:::note
+
+请勿使用 GitHub Issue 跟踪器寻求安装帮助或咨询配置问题。此外，提问前请务必先阅读本页面，很多问题在这里已有答案！
+
+:::
+
+## 许可证
+AssettoServer 采用 GNU Affero General Public License v3.0 许可证发布，更多信息请参阅 [LICENSE](https://github.com/compujuckel/AssettoServer/blob/master/LICENSE)。  
+此外，你必须保留服务器中出现的法律声明和作者署名。
+
+> Copyright (C)  2022 Niewiarowski, compujuckel
+> 
+> This program is free software: you can redistribute it and/or modify
+> it under the terms of the GNU Affero General Public License as published
+> by the Free Software Foundation, either version 3 of the License, or
+> (at your option) any later version.
+> 
+> This program is distributed in the hope that it will be useful,
+> but WITHOUT ANY WARRANTY; without even the implied warranty of
+> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> GNU Affero General Public License for more details.
+> 
+> You should have received a copy of the GNU Affero General Public License
+> along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.
+> 
+> 
+> Additional permission under GNU AGPL version 3 section 7
+> 
+> If you modify this Program, or any covered work, by linking or combining it 
+> with the Steamworks SDK by Valve Corporation, containing parts covered by the
+> terms of the Steamworks SDK License, the licensors of this Program grant you
+> additional permission to convey the resulting work.
+> 
+> Additional permission under GNU AGPL version 3 section 7
+> 
+> If you modify this Program, or any covered work, by linking or combining it 
+> with plugins published on https://www.patreon.com/assettoserver, the licensors
+> of this Program grant you additional permission to convey the resulting work.
+

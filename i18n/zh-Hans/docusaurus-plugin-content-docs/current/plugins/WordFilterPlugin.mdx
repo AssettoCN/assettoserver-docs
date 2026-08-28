@@ -1,0 +1,22 @@
+---
+description: 屏蔽特定聊天消息模式，并禁止使用特定用户名的玩家加入
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_word_filter_cfg.reference.yml";
+
+# WordFilterPlugin
+## 功能
+* 禁止特定的玩家名
+* 过滤聊天消息
+* 在出现特定聊天消息时自动封禁
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+- WordFilterPlugin
+```
+
+### 参考配置
+**所有匹配模式均为正则表达式。如果你不知道什么是正则表达式，强烈建议先去了解一下。**
+<CodeBlock language="yaml" title="plugin_word_filter_cfg.yml">{cfg}</CodeBlock>

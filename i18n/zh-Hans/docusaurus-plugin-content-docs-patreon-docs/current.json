@@ -1,0 +1,18 @@
+{
+  "version.label": {
+    "message": "未发布",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Plugins": {
+    "message": "插件",
+    "description": "The label for category 'Plugins' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Plugins.link.generated-index.description": {
+    "message": "AssettoServer Patreon 提供的插件列表",
+    "description": "The generated-index page description for category 'Plugins' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.AssettoServer Hub": {
+    "message": "AssettoServer Hub",
+    "description": "The label for category 'AssettoServer Hub' in sidebar 'tutorialSidebar'"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "title": {
+    "message": "AssettoServer",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "AssettoServer Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Docs": {
+    "message": "文档",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.Patreon Docs": {
+    "message": "Patreon 文档",
+    "description": "Navbar item with label Patreon Docs"
+  }
+}

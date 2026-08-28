@@ -1,0 +1,42 @@
+---
+description: 使用类 TXR 风格的 UI 向其他玩家发起竞速挑战
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_patreon_race_challenge_cfg.reference.yml";
+
+# PatreonRaceChallengePlugin
+用于向其他玩家发起竞速挑战的插件。  
+附带简洁的类 TXR 风格 UI 和带 Elo 评分的排行榜。
+
+::::note
+
+排行榜需要 PatreonHubPlugin 才能工作。
+
+需要强制最低 CSP 版本 0.1.77 (1937)，并且在 `extra_cfg.yml` 中设置 `EnableClientMessages: true` 和 `EnableUdpClientMessages: true`！
+
+请勿同时使用 RaceChallengePlugin 和 PatreonRaceChallengePlugin！
+
+::::
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+  - PatreonRaceChallengePlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_patreon_race_challenge_cfg.yml">{cfg}</CodeBlock>
+
+## UI 自定义 {#ui-customization}
+竞速挑战的 lua 脚本位于 `plugins/PatreonRaceChallengePlugin/lua/racechallenge.lua`。你可以编辑此文件来更改 UI、添加 logo 等。  
+注意，出于安全原因，比赛逻辑在服务器端运行，无法通过此方式修改。
+
+## 工作原理
+你可以跟在另一辆由玩家控制的车后面，闪烁三次大灯或远光灯来发起竞速挑战。
+被挑战的玩家可以打开双闪灯，或在聊天中输入 `/accept` 来接受挑战。如果被挑战的玩家在 10 秒内未作出回应，或两车距离过远，挑战将被取消。
+
+双方玩家将以固定的初始分数开始比赛。领先的一方不会扣分，而后方的一方每秒都会扣分，落后越远，扣分越多。
+
+当一方玩家的分数归零时，比赛结束。

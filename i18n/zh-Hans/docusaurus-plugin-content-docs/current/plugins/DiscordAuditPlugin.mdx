@@ -1,0 +1,22 @@
+---
+description: 将聊天消息 / 踢出 / 封禁操作发送到 Discord 频道
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_discord_cfg.reference.yml";
+
+# DiscordAuditPlugin
+## 功能
+* 每次执行踢出 / 封禁时发送一条 Discord 消息
+* 将所有聊天消息记录到 Discord 频道
+
+生成 Webhook URL：https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+  - DiscordAuditPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_discord_cfg.yml">{cfg}</CodeBlock>

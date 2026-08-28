@@ -1,0 +1,19 @@
+---
+description: 将服务器连接到 AssettoServer Hub
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import cfg from "!!raw-loader!./reference/plugin_patreon_hub_cfg.reference.yml";
+
+# PatreonHubPlugin
+将该服务器连接到一个 AssettoServer Hub 实例。其他插件的排行榜需要此插件才能工作。
+
+## 配置
+在 `extra_cfg.yml` 中启用该插件
+```yaml title="extra_cfg.yml"
+EnablePlugins:
+  - PatreonHubPlugin
+```
+
+### 参考配置
+<CodeBlock language="yaml" title="plugin_patreon_hub_cfg.yml">{cfg}</CodeBlock>
