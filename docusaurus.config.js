@@ -47,6 +47,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/compujuckel/assettoserver-docs/blob/master/',
           showLastUpdateTime: true,
+          lastVersion: 'current',
           versions: {
             current: {
               label: "0.0.55",
@@ -69,6 +70,7 @@ const config = {
         routeBasePath: 'patreon-docs',
         sidebarPath: require.resolve('./sidebars.js'),
         showLastUpdateTime: true,
+        lastVersion: 'current',
         versions: {
           current: {
             label: "Unreleased",
