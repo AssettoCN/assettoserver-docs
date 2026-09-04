@@ -7,8 +7,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'AssettoServer',
   tagline: 'Custom Assetto Corsa server with focus on freeroam',
-  url: 'https://assettocn.github.io',
-  baseUrl: '/assettoserver-docs/',
+  url: 'https://as.assetto.cn',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
