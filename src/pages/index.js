@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -11,12 +11,7 @@ export default function Home() {
   const {siteConfig, i18n} = useDocusaurusContext();
   const isZh = i18n.currentLocale === 'zh-Hans';
 
-  // Fork-only: send the default-locale homepage to the zh-Hans homepage.
-  useEffect(() => {
-    if (!isZh) {
-      window.location.replace(`${siteConfig.baseUrl}zh-Hans/`);
-    }
-  }, [isZh, siteConfig.baseUrl]);
+
 
   const tagline = isZh
     ? '为自由漫游而生的 Assetto Corsa 自定义服务器'
